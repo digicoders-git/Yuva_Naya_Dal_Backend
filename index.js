@@ -15,7 +15,14 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://yuva-naya-dal-admin-panel.vercel.app'
+  ],
+  credentials: true,
+}));
 
 // Serve static folder
 const path = require('path');
