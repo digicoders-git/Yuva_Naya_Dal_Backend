@@ -19,7 +19,8 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'http://localhost:5174',
-    'https://yuva-naya-dal-admin-panel.vercel.app'
+    'https://yuva-naya-dal-admin-panel.vercel.app',
+    'https://yuva-naya-dal.vercel.app'
   ],
   credentials: true,
 }));
