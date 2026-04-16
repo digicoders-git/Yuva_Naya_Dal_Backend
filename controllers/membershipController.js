@@ -40,7 +40,11 @@ exports.createMembership = async (req, res) => {
       const messages = Object.values(error.errors).map(val => val.message);
       return res.status(400).json({ success: false, error: messages });
     }
-    res.status(500).json({ success: false, error: 'Server Error' });
+    if (error.code === 11000) {
+      return res.status(400).json({ success: false, error: 'यह मोबाइल नंबर या ID पहले से ही उपयोग में है।' });
+    }
+    console.error('Membership Creation Error:', error);
+    res.status(500).json({ success: false, error: 'सर्वर त्रुटि: कृपया पुनः प्रयास करें।' });
   }
 };
 
