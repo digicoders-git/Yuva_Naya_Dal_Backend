@@ -20,7 +20,9 @@ app.use(cors({
     'http://localhost:5173',
     'http://localhost:5174',
     'https://yuva-naya-dal-admin-panel.vercel.app',
-    'https://yuva-naya-dal.vercel.app'
+    'https://yuva-naya-dal.vercel.app',
+    'https://www.yuvanayaydal.org',
+    'https://yuvanayaydal.org'
   ],
   credentials: true,
 }));
