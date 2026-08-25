@@ -18,8 +18,16 @@ const protect = (req, res, next) => {
   }
 };
 
+const fs = require('fs');
+
 const profileStorage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/profile/'),
+  destination: (req, file, cb) => {
+    const dir = 'uploads/profile/';
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    cb(null, dir);
+  },
   filename: (req, file, cb) => cb(null, 'profile-' + Date.now() + path.extname(file.originalname)),
 });
 const profileUpload = multer({

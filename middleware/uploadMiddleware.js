@@ -1,10 +1,16 @@
 const multer = require('multer');
 const path = require('path');
 
+const fs = require('fs');
+
 // Set storage engine
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/gallery/');
+    const dir = 'uploads/gallery/';
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    cb(null, dir);
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
